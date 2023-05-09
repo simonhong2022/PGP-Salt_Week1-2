@@ -4,7 +4,7 @@ import IUser from "../type/type";
 
 const BASE_PATH: string = 'https://randomuser.me/api/';
 
-export async function fetchUser(setUser: Dispatch<SetStateAction<IUser>>) {
+export async function fetchUser(setUser: Dispatch<SetStateAction<IUser>>, setName: Dispatch<SetStateAction<string>>) {
     const response = await fetch(BASE_PATH);
     const responseData = (await response.json()).results[0];
     const user:IUser = {
@@ -14,4 +14,5 @@ export async function fetchUser(setUser: Dispatch<SetStateAction<IUser>>) {
         age: `${responseData.dob.age}`
     }
     setUser(user);
+    setName(user.name);
 }

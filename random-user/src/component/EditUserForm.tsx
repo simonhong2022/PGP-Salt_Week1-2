@@ -3,19 +3,17 @@ import IUser from "../type/type"
 
 type EditUserFormProps = {
     name: string
-    setName: Dispatch<SetStateAction<string>>,
     onNameChanged(e: React.ChangeEvent<HTMLInputElement>): void
 }
 
-export function EditUserForm({name, setName, onNameChanged}: EditUserFormProps) {
- 
- return (
-    <form action="">
-    <input type="text" name="name" value={name} onChange={onNameChanged} placeholder="name"/>
-    <button>Edit name</button>
+export function EditUserForm({ name, onNameChanged }: EditUserFormProps) {
 
-    </form>
+    return (
+        <form action="">
+            <p>Edit your name:</p>
+            <input type="text" name="name" value={name} onChange={onNameChanged} placeholder="name" />
+        </form>
 
- )
+    )
 }
-    
+
