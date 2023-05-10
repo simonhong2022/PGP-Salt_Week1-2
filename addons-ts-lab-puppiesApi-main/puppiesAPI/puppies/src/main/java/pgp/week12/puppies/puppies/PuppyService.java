@@ -5,14 +5,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class PuppyService {
-
+    @Autowired
+    JpaPuppyRepository repo;
     @Autowired
     IPuppyRepository puppyRepo;
 
     public PuppyService() {
     }
 
-    public PuppyService(IPuppyRepository puppyRepo) {
+    public PuppyService(IPuppyRepository puppyRepo,JpaPuppyRepository repo) {
+        this.repo = repo;
         this.puppyRepo = puppyRepo;
     }
 
@@ -24,10 +26,13 @@ public class PuppyService {
         return puppyRepo.getById(id);
     }
 
-    Puppy savePuppy(Puppy puppy) {
+    public Puppy savePuppy(Puppy puppy) {
         return puppyRepo.savePuppy(puppy);
     }
 
+    public void savePuppies(List<Puppy> puppies) {
+        repo.saveAll(puppies);
+    }
     public Puppy updatePuppyData(Puppy newPuppyData) {
         Puppy storedPuppy = findById(newPuppyData.getId());
         if(storedPuppy == null) {

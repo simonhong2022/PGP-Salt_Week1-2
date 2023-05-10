@@ -7,7 +7,7 @@ public interface IPuppyRepository {
 
     Puppy savePuppy(Puppy newPuppy);
 
-    void deletePuppy(String id);
+     void deletePuppy(String id);
 
     void deletePuppy(Puppy puppy);
 

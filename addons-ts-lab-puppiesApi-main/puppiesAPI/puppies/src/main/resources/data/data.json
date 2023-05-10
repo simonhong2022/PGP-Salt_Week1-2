@@ -1,0 +1,61 @@
+[
+  {
+    "breed": "Maltipoo",
+    "name": "Maltine",
+    "birthdate": "2022-01-02"
+  },
+
+  {
+    "breed": "Chow-chow",
+    "name": "Chow",
+    "birthdate": "2023-04-12"
+  },
+
+  {
+    "breed": "Shih Tzu",
+    "name": "Tzu",
+    "birthdate": "2022-09-23"
+  },
+
+  {
+    "breed": "Border Collie",
+    "name": "Collie",
+    "birthdate": "2021-12-05"
+  },
+
+  {
+    "breed": "Pug",
+    "name": "pig",
+    "birthdate": "2022-06-07"
+  },
+
+  {
+    "breed": "Siberian Husky",
+    "name": "Hush",
+    "birthdate": "2023-02-08"
+  },
+
+  {
+    "breed": "Beagle",
+    "name": "Bea",
+    "birthdate": "2020-11-17"
+  },
+
+  {
+    "breed": "Dachshund",
+    "name": "Dach",
+    "birthdate": "2023-03-02"
+  },
+
+  {
+    "breed": "Dalmatian",
+    "name": "Dalma",
+    "birthdate": "2022-04-06"
+  },
+
+  {
+    "breed": "Shiba Inu",
+    "name": "Shiba",
+    "birthdate": "2022-05-17"
+  }
+]
