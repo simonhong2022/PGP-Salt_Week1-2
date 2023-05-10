@@ -1,6 +1,13 @@
 import { Dispatch, SetStateAction } from "react";
 
+export type PuppyRequestDto = {
+    breed: string,
+    name: string,
+    birthdate: string
+}
+
 export interface IPuppy {
+    id: string,
     breed: string,
     name: string,
     birthdate: string
@@ -19,7 +26,7 @@ export async function fetchPuppies(setPuppies: Dispatch<SetStateAction<IPuppy[]>
 export async function addPuppy(event: React.FormEvent<HTMLFormElement>,
     setPuppies: Dispatch<SetStateAction<IPuppy[]>>, setOpen: Dispatch<SetStateAction<boolean>>,
     setErrMessage: Dispatch<SetStateAction<string>>) {
-    const reqBody: IPuppy = {
+    const reqBody: PuppyRequestDto = {
         breed: event.currentTarget.breed.value,
         name: event.currentTarget.pname.value,
         birthdate: event.currentTarget.birthdate.value
@@ -52,7 +59,7 @@ export async function updatePuppy(id: string, event: React.FormEvent<HTMLFormEle
      setPuppies: Dispatch<SetStateAction<IPuppy[]>>,setOpen: Dispatch<SetStateAction<boolean>>,
      setErrMessage: Dispatch<SetStateAction<string>> ) {
      
-     const reqBody: IPuppy = {
+     const reqBody: PuppyRequestDto = {
         breed: event.currentTarget.breed.value,
         name: event.currentTarget.pname.value,
         birthdate: event.currentTarget.birthdate.value
