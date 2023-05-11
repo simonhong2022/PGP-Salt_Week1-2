@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
+.home-main {
+    font-family: 'Caveat', cursive;
+    min-height: 100%;
+    height: fit-content;
+}
+
+.home-header {
+    z-index: 1;
+    width: 100%;
+    color: white;
+    height: 5rem;
+    padding-top: 14px;
+    text-align: center;
+}
+
+.ui.brown.icon.center.aligned.header.home-header {
+
+    margin-top: 3%;
+}
+
+.home-body-container {
+    position: absolute;
+    margin-top: 10%;
+    width: 100%;
+    
+}

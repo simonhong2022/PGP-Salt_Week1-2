@@ -1,0 +1,17 @@
+
+.puppies-add {
+    position: relative;
+    margin-bottom: 10px;
+    margin-left: 5%;
+}
+
+.puppies-card-box {
+    display: flex;
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+}
+
+.puppycard-main {
+    
+    margin-bottom: 20px;
+}

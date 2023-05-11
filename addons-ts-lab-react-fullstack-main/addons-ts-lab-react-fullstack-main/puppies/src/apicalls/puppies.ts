@@ -55,6 +55,8 @@ export async function addPuppy(event: React.FormEvent<HTMLFormElement>,
 
 }
 
+/*
+
 export async function updatePuppy(id: string, event: React.FormEvent<HTMLFormElement>,
      setPuppies: Dispatch<SetStateAction<IPuppy[]>>,setOpen: Dispatch<SetStateAction<boolean>>,
      setErrMessage: Dispatch<SetStateAction<string>> ) {
@@ -87,6 +89,7 @@ export async function updatePuppy(id: string, event: React.FormEvent<HTMLFormEle
     setErrMessage('');
     
 }
+*/
 
 export async function deletePuppy(id: string, setPuppies: Dispatch<SetStateAction<IPuppy[]>>) {
     const reqOptions = {

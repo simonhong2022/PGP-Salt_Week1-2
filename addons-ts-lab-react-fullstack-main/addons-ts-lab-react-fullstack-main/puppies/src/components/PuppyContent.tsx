@@ -19,8 +19,8 @@ export default function PuppyContent() {
 
     return (
 
-        <div>
-            <div>
+        <div className="puppies-content-wrap">
+            <div className="puppies-add">
                 <Modal animation={false}
                     onClose={() => setOpen(false)}
                     onOpen={() => setOpen(true)}
@@ -53,16 +53,12 @@ export default function PuppyContent() {
                     </Modal.Content>
                 </Modal>
             </div>
-            <div>
+            <div className="puppies-card-box">
                 {puppies.map((puppy) => {
                     return (
-                        <Grid>
-                            <Grid.Row>
-                                <Grid.Column>
-                                    <PuppyCard puppy={puppy} setPuppies={setPuppies} />
-                                </Grid.Column>
-                            </Grid.Row>
-                        </Grid>
+
+                        <PuppyCard puppy={puppy} setPuppies={setPuppies} />
+
                     )
                 })}
             </div>
