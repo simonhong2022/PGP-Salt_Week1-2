@@ -13,6 +13,8 @@ export interface IPuppy {
     birthdate: string
 }
 
+const UnsplashAccessKey: string = 'jZDrgwX1qZA2ZQ9Tyqd9QClAfAFae1BTp8I5X29o5E0';
+const UnsplashSecretKey: string = 'idsChCBGJkY9TWNudTuYiWBejYqizHJ2NB_vPJFmLk4';
 const BASE_PATH: string = 'http://localhost:9000/api/puppies';
 
 export async function fetchPuppies(setPuppies: Dispatch<SetStateAction<IPuppy[]>>) {
@@ -20,6 +22,13 @@ export async function fetchPuppies(setPuppies: Dispatch<SetStateAction<IPuppy[]>
     const responseData: IPuppy[] = await response.json();
 
     setPuppies(responseData);
+
+}
+
+export async function fetchPuppyPhoto(breed: string | string[]) {
+    const response = await fetch(`https://api.unsplash.com/search/photos?query=${breed}+dog&client_id=${UnsplashAccessKey}`);
+    const responseData = await response.json();
+    return responseData.results[0].urls.small;
 
 }
 
