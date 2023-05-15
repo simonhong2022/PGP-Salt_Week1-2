@@ -1,6 +1,6 @@
 import { IPuppy, addPuppy, fetchPuppies } from "@/apicalls/puppies";
 import { useEffect, useState } from "react";
-import { Button, Modal, Input, Icon, Form, Label, Popup, Message, Grid } from 'semantic-ui-react'
+import { Button, Modal, Input, Form, Label, Message } from 'semantic-ui-react'
 import PuppyCard from "./PuppyCard";
 
 

@@ -13,23 +13,20 @@ export interface IPuppy {
     birthdate: string
 }
 
-const UnsplashAccessKey: string = 'jZDrgwX1qZA2ZQ9Tyqd9QClAfAFae1BTp8I5X29o5E0';
-const UnsplashSecretKey: string = 'idsChCBGJkY9TWNudTuYiWBejYqizHJ2NB_vPJFmLk4';
-const BASE_PATH: string = 'http://localhost:9000/api/puppies';
+const BASE_PATH = process.env.NEXT_PUBLIC_PORT;
 
 export async function fetchPuppies(setPuppies: Dispatch<SetStateAction<IPuppy[]>>) {
-    const response = await fetch(BASE_PATH);
+    const response = await fetch(BASE_PATH!);
     const responseData: IPuppy[] = await response.json();
 
     setPuppies(responseData);
 
 }
 
-export async function fetchPuppyPhoto(breed: string | string[]) {
-    const response = await fetch(`https://api.unsplash.com/search/photos?query=${breed}+dog&client_id=${UnsplashAccessKey}`);
+export async function fetchPuppyPhoto(breed: string | string[], setPhotoUrl: Dispatch<SetStateAction<string>>) {
+    const response = await fetch(`https://api.unsplash.com/search/photos?query=${breed}+dog&client_id=${process.env.NEXT_PUBLIC_UNSPLASH_KEY}`);
     const responseData = await response.json();
-    return responseData.results[0].urls.small;
-
+    setPhotoUrl(responseData.results[0].urls.small);
 }
 
 export async function addPuppy(event: React.FormEvent<HTMLFormElement>,
@@ -57,48 +54,12 @@ export async function addPuppy(event: React.FormEvent<HTMLFormElement>,
         body: JSON.stringify(reqBody)
     };
 
-    const response = await fetch(BASE_PATH, reqOptions);
+    const response = await fetch(BASE_PATH!, reqOptions);
     await fetchPuppies(setPuppies);
     setOpen(false);
     setErrMessage('');
 
 }
-
-/*
-
-export async function updatePuppy(id: string, event: React.FormEvent<HTMLFormElement>,
-     setPuppies: Dispatch<SetStateAction<IPuppy[]>>,setOpen: Dispatch<SetStateAction<boolean>>,
-     setErrMessage: Dispatch<SetStateAction<string>> ) {
-     
-     const reqBody: PuppyRequestDto = {
-        breed: event.currentTarget.breed.value,
-        name: event.currentTarget.pname.value,
-        birthdate: event.currentTarget.birthdate.value
-     }
-
-     if (!reqBody.breed) {
-        setErrMessage('Please choose a breed.');
-        return;
-    }
-
-    if (!reqBody.name) {
-        setErrMessage('Please choose a name.');
-        return;
-    }
-
-    const reqOptions = {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(reqBody)
-    };
-
-    const response = await fetch(BASE_PATH, reqOptions);
-    await fetchPuppies(setPuppies);
-    setOpen(false);
-    setErrMessage('');
-    
-}
-*/
 
 export async function deletePuppy(id: string, setPuppies: Dispatch<SetStateAction<IPuppy[]>>) {
     const reqOptions = {

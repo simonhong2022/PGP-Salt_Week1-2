@@ -1,15 +1,9 @@
 import Link from "next/link";
-import { IPuppy, deletePuppy, fetchPuppyPhoto } from "@/apicalls/puppies";
+import { IPuppy, fetchPuppyPhoto } from "@/apicalls/puppies";
 import { deleteSpecificPuppy, fetchPuppy, updatePuppy } from "@/apicalls/specificpuppy";
 import { useRouter } from "next/router";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { Button, Modal, Input, Form, Label, List, Card, Message, Image, Confirm, Grid } from 'semantic-ui-react'
-
-
-type SpecificPuppyProps = {
-    puppy: IPuppy;
-    setPuppies: Dispatch<SetStateAction<IPuppy[]>>;
-}
+import { useEffect, useState } from "react";
+import { Button, Modal, Input, Form, Label, Card, Message, Image, Confirm } from 'semantic-ui-react'
 
 export default function SpecificPuppy() {
 
@@ -20,11 +14,11 @@ export default function SpecificPuppy() {
 
     useEffect(() => {
         if (puppyid) {
-            fetchPuppy(puppyid, setPuppy);
-            fetchPuppyPhoto(puppyid).then((url) => setPhotoUrl(url)).catch((error: any) => console.log(error));
+            fetchPuppy(puppyid, setPuppy, setPhotoUrl);
         }
     }, [puppyid]);
 
+    
     const [open, setOpen] = useState(false);
     const [deleteopen, setDeleteopen] = useState(false);
 
@@ -64,7 +58,7 @@ export default function SpecificPuppy() {
                                     <Modal.Content>
                                         <Form onSubmit={(e) => {
                                             e.preventDefault();
-                                            updatePuppy(puppy.id, e, setPuppy, setOpen, setErrMessage);
+                                            updatePuppy(puppy.id, e, setPuppy, setOpen, setErrMessage, setPhotoUrl);
                                         }}>
                                             <Form.Field>
                                                 <Label>Breed</Label>

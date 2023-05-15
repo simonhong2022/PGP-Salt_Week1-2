@@ -1,6 +1,6 @@
 
 import PuppyContent from '@/components/PuppyContent'
-import { Header, Icon, Grid } from 'semantic-ui-react'
+import { Header, Icon } from 'semantic-ui-react'
 
 
 export default function Home() {

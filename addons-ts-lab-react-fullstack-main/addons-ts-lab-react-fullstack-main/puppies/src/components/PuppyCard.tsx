@@ -1,6 +1,5 @@
 import { useState, Dispatch, SetStateAction, useEffect } from "react";
-import { Button, Image, Card, Confirm, Icon } from 'semantic-ui-react'
-import Link from "next/link";
+import { Image, Card } from 'semantic-ui-react'
 import { IPuppy, fetchPuppyPhoto } from "@/apicalls/puppies";
 
 type PuppyCardProps = {
@@ -14,8 +13,7 @@ export default function PuppyCard(props: PuppyCardProps) {
     const { puppy, setPuppies } = props;
 
     useEffect(() => {
-        fetchPuppyPhoto(puppy.breed).then((url) => setPhotoUrl(url)).catch((error: any) => console.log(error));
-        console.log(setPhotoUrl);
+        fetchPuppyPhoto(puppy.breed, setPhotoUrl);
     }, []);
 
     return (

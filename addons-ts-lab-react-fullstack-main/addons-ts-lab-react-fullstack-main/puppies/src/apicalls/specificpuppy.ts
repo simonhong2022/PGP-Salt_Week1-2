@@ -13,19 +13,21 @@ export interface IPuppy {
     birthdate: string
 }
 
-const BASE_PATH: string = 'http://localhost:9000/api/puppies';
+const BASE_PATH = process.env.NEXT_PUBLIC_PORT;
 
-export async function fetchPuppy(id: string | string[], setPuppy: Dispatch<SetStateAction<IPuppy>>) {
+export async function fetchPuppy(id: string | string[], setPuppy: Dispatch<SetStateAction<IPuppy>>, setPhotoUrl: Dispatch<SetStateAction<string>>) {
     const response = await fetch(`${BASE_PATH}/${id}`);
     const responseData: IPuppy = await response.json();
-
     setPuppy(responseData);
 
+    const response1 = await fetch(`https://api.unsplash.com/search/photos?query=${responseData.breed}+dog&client_id=${process.env.NEXT_PUBLIC_UNSPLASH_KEY}`);
+    const responseData1 = await response1.json();
+    setPhotoUrl(responseData1.results[0].urls.small);
 }
 
 export async function updatePuppy(id: string, event: React.FormEvent<HTMLFormElement>,
     setPuppy: Dispatch<SetStateAction<IPuppy>>,setOpen: Dispatch<SetStateAction<boolean>>,
-    setErrMessage: Dispatch<SetStateAction<string>> ) {
+    setErrMessage: Dispatch<SetStateAction<string>>, setPhotoUrl: Dispatch<SetStateAction<string>>  ) {
     
     const reqBody: PuppyRequestDto = {
        breed: event.currentTarget.breed.value,
@@ -50,7 +52,7 @@ export async function updatePuppy(id: string, event: React.FormEvent<HTMLFormEle
    };
 
    const response = await fetch(`${BASE_PATH}/${id}`, reqOptions);
-   await fetchPuppy(id, setPuppy);
+   await fetchPuppy(id, setPuppy, setPhotoUrl);
    setOpen(false);
    setErrMessage('');
    
