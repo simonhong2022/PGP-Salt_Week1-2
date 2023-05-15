@@ -28,7 +28,7 @@ export default function SpecificPuppy() {
         <main className="specificpuppy-main">
             <nav className="specificpuppy-navbar">
                 <Link className="specificpuppy-navlink" href="/">Home</Link>
-                <Link className="specificpuppy-navlink" href="/about">About</Link>
+                <Link className="specificpuppy-navlink" href="/">About</Link>
             </nav>
             <div className="specificpuppy-body-container">
                 <div className="specificpuppy-content-wrap">
