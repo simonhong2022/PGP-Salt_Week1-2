@@ -25,7 +25,8 @@ public class PuppiesApplication {
 		return args -> {
 			// read json and write to db
 			ObjectMapper mapper = new ObjectMapper();
-			TypeReference<List<Puppy>> typeReference = new TypeReference<List<Puppy>>(){};
+			TypeReference<List<Puppy>> typeReference = new TypeReference<>() {
+			};
 			InputStream inputStream = TypeReference.class.getResourceAsStream("/data/data.json");
 			try {
 				List<Puppy> puppies = mapper.readValue(inputStream,typeReference);
